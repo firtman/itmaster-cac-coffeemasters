@@ -18,25 +18,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.itmaster.mobile.coffeemasters.data.API
+import app.itmaster.mobile.coffeemasters.data.Category
+import app.itmaster.mobile.coffeemasters.data.DataManager
 import app.itmaster.mobile.coffeemasters.data.Offer
+import app.itmaster.mobile.coffeemasters.pages.InfoPage
+import app.itmaster.mobile.coffeemasters.pages.MenuPage
 import app.itmaster.mobile.coffeemasters.pages.OffersPage
+import app.itmaster.mobile.coffeemasters.pages.OrderPage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun App() {
+fun App(dataManager: DataManager) {
     var currentPage = remember { mutableStateOf("menu") }
+
     Scaffold(
         topBar = { TopAppBar(title = {
             Box(contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxWidth()) {
-                Text("Coffee Master")
+                Text("Coffee Master: ${currentPage.value}")
             }
         }) },
         content = {
             Box(modifier = Modifier.padding(bottom = BottomBarUI.marginBottom)) {
-                OffersPage()
+                when (currentPage.value) {
+                    "menu" -> MenuPage(dataManager)
+                    "offers" -> OffersPage()
+                    "order" -> OrderPage(dataManager)
+                    "info" -> InfoPage()
+                }
             }
         },
         bottomBar = {

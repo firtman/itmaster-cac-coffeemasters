@@ -1,5 +1,7 @@
 package app.itmaster.mobile.coffeemasters.data
 
+import com.google.gson.annotations.SerializedName
+
 data class Product(
     var id: Int,
     var name: String,
@@ -8,10 +10,10 @@ data class Product(
     var image: String
 )
 
-
 data class Category(
     var name: String,
-    var product: List<Product>
+    //@SerializedName("products")
+    var products: List<Product>
 )
 
 data class Offer(
@@ -19,3 +21,4 @@ data class Offer(
     var title: String,
     var description: String
 )
+
