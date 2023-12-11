@@ -65,7 +65,7 @@ fun OfferView(offer: Offer) {
         ) {
             Text(text = offer.title,
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.surfaceVariant)
                     .padding(8.dp)
@@ -74,7 +74,7 @@ fun OfferView(offer: Offer) {
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = offer.description,
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.primary,
 
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.surfaceVariant)

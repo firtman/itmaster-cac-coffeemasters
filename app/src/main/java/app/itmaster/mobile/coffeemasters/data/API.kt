@@ -7,6 +7,7 @@ import retrofit2.http.GET
 interface CoffeeMastersApiService {
     @GET("menu.json")
     suspend fun getMenu(): List<Category>
+
 }
 
 object API {
